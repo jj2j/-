@@ -2,3 +2,4 @@ pyTelegramBotAPI
 bs4
 uuid
 Proxy-List-Scrapper
+user-agent
