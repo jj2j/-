@@ -16,7 +16,7 @@ token='5663483826:AAEm_gvlImAJ9guRuDoR8HNrN8CxmejnJEI'
 from Proxy_List_Scrapper import Scrapper, Proxy, ScrapperException
 from pprint import pprint
 def pro():
-    Category='ALL'
+    Category='US'
     proxy = Scrapper(category=Category, print_err_trace=False)
     data = proxy.getProxies()
     for item in data.proxies:
